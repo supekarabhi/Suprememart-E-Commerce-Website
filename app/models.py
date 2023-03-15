@@ -22,7 +22,7 @@ STATE_CHOICES = (
     ('Kerala','Kerala'),
     ('Lakshadweep','Lakshadweep'),
     ('Andaman & Nicobar Island','Madhya Pradesh'),
-    ('Maharashtra','Maharashtra'),             
+    ('Maharashtra','Maharashtra'),            
     ('Manipur','Manipur'),
     ('Meghalaya','Meghalaya'),
     ('Mizoram','Mizoram'),
@@ -64,8 +64,8 @@ class Product(models.Model):
     discounted_price=models.FloatField()
     description=models.TextField()
     brand=models.CharField(max_length=100)
-    category=models.CharField(choices=CATEGORY_CHOICES,max_length=2)
-    product_image=models.ImageField(upload_to='producting')
+    category=models.CharField(choices=CATEGORY_CHOICES,max_length=2) 
+    product_image=models.ImageField(upload_to='productimg')
 
     def __str__(self):
         return str(self.id)
