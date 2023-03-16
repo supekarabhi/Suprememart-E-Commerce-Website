@@ -32,7 +32,7 @@
 {% block livesale %}
 <!-- Live Sale Section -->
 <div class="container">
-  <div class="row bg-primary text-center p-0 text-white border-bottom shadow">
+  <div class="row bg-success text-center p-0 text-white border-bottom shadow">
     <h1>SALE IS LIVE NOW</h1>
     <span>5% Instant Discount on Axis Bank Credit and Debit Card</span>
     <small class="fw-lighter">Term and Condition Applied (For details visit Bank's official Website)</small>
@@ -44,7 +44,7 @@
 {% block main-content %}
 <!-- 1st Product Slider -->
 <div class="m-3">
- <h2>SupremeMart TopWears</h2>
+  <h4 style="color:red">Topwears</h4>
  <!-- Slider 1 -->
  <div class="owl-carousel" id="slider1">
    {% for t in topwears %}
@@ -54,7 +54,8 @@
 </div>
 <!-- End 1st Product Slider -->
 <!-- Payment Info Section -->
-<div class="container my-5">
+<div class="container m-5">
+  
   <div class="row">
    <div class="col-sm-3">
     <div class="card mb-3">
@@ -87,8 +88,8 @@
   </div>
  </div>
  <!-- End Payment Info Section -->
-<div class="m-3">
-  <h2>SupremeMart BottomWears</h2>
+ <div class="m-3">
+  <h4 style="color:red">Bottomwears</h4>
   <!-- Slider 1 -->
   <div class="owl-carousel" id="slider1">
     {% for t in bottomwears %}
@@ -99,16 +100,24 @@
 
 <!-- 2nd Product Slider -->
 <div class="m-3">
-  <h2>SupremeMart Mobiles</h2>
-  <!-- Slider 1 -->
+  <h4 style="color:red">Mobiles</h4>
+  
   <div class="owl-carousel" id="slider1">
     {% for t in mobiles %}
    <a href="{% url 'product-detail' t.id %}" class="btn"><div class="item"><img src="{{t.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{t.title}}</span><br><span class="fs-5">Rs. {{t.discounted_price}}</span></div></a>
     {% endfor %}
   </div>
  </div>
- 
-  <!-- Slider 1 -->
+
+<div class="m-3">
+  <h4 style="color:red">Laptops</h4>
+  
+  <div class="owl-carousel" id="slider1">
+    {% for l in laptops %}
+   <a href="{% url 'product-detail' l.id %}" class="btn"><div class="item"><img src="{{l.product_image.url}}" alt="" height="200px"><span class="fw-bold">{{l.title}}</span><br><span class="fs-5">Rs. {{l.discounted_price}}</span></div></a>
+    {% endfor %}
+  </div>
+</div>
   
  
 <!-- End 2nd Product Slider -->
