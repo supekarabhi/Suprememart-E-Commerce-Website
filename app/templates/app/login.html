@@ -13,7 +13,7 @@
       <div class="form-group">
       {{f.label_tag}}{{f}}<small class="tect-danger">{{f.errors|striptags}}</small><br>
      {% endfor %}
-     <small><a href="{% 'password_reset'}">Forgot password ?</a></small><br>
+     <small><a href="{% url 'password_reset' %}">Forgot password ?</a></small><br>
      <input type="submit" class="btn btn-primary mt-4" value="login">
      <br>
      <div class="text-center text-primary fw-bold"><small>New to Suprememart ?<a href="{% url 'customerregistration' %}" class="text-danger">Create new account</a></samall></div>
