@@ -1,3 +1,3 @@
 Suprememart
-This is a Dynamic DJango Shopping Website 
-![alt text]
+This is a fully working Dynamic DJango Shopping Website 
+
