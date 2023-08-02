@@ -1,38 +1,41 @@
 {% extends 'app/base.html' %}
 {% load static %}
-{% block title %}Buy Now{% endblock title %}
+
+{% block title %}Buy Laptops{% endblock title %}
+
 {% block main-content %}
 <div class="container my-5">
- <div class="row">
-  <div class="col-sm-3">
-   <div class="list-group">
-    <a href="{% url 'laptop' %}" class="list-group-item list-group-item-action" aria-current="true">All Laptops</a>
-    <a href="{% url 'laptopdata' 'hp' %}" class="list-group-item list-group-item-action" aria-current="true">HP</a>
-    <a href="{% url 'laptopdata' 'dell' %}" class="list-group-item list-group-item-action">Dell</a>
-   
-
-  </div> 
-  </div>
-  <div class="col-sm-8">
-   <div class="col-sm-8">
-    {% for l in laptops %}
-     <div class="col-sm-4 text-center mb-4">
-      <a href="{% url 'product-detail' l.id %}"
-      class="btn">
-      <div clss="item">
-        <img src="{{l.product_image.url}}" alt="" height="" class="">
-        <div class="fw-bold">{{l.title}}</div>
-        <div class="fw-bold">Rs.{{l.discounted_price}}
-        <small class="fw-light text-decoration-line-through">{{l.selling_price}}</small></div>
-        </div>
-      </a>
+  <div class=" single_catagory_area row">
+    <div class="col-sm-3">
+      <div class="list-group">
+        <!-- Use cards or icons for product categories -->
+        <a href="{% url 'laptop' %}" class="list-group-item list-group-item-action" aria-current="true">All Laptops</a>
+        <a href="{% url 'laptopdata' 'hp' %}" class="list-group-item list-group-item-action" aria-current="true">HP</a>
+        <a href="{% url 'laptopdata' 'dell' %}" class="list-group-item list-group-item-action">Dell</a>
+      </div> 
     </div>
-    {% endfor %}
+    <div class="col-sm-9">
+      <div class="row">
+        {% for l in laptops %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <a href="{% url 'product-detail' l.id %}">
+              <img src="{{l.product_image.url}}" alt="{{l.title}}" class="card-img-top">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">{{l.title}}</h5>
+              <p class="card-text">
+                <span class="fw-bold">Rs.{{l.discounted_price}}</span>
+                <small class="fw-light text-decoration-line-through">Rs.{{l.selling_price}}</small>
+              </p>
+              <!-- Add 'Add to Cart' or 'Buy Now' button here -->
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- Add pagination here if needed -->
+    </div>
   </div>
-  
-
-         
-  </div>
- </div>
 </div>
 {% endblock main-content %}

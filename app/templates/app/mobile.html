@@ -1,41 +1,44 @@
 {% extends 'app/base.html' %}
 {% load static %}
-{% block title %}Buy Now{% endblock title %}
+
+{% block title %}Buy Mobiles{% endblock title %}
+
 {% block main-content %}
 <div class="container my-5">
- <div class="row">
-  <div class="col-sm-3">
-   <div class="list-group">
-    <a href="{% url 'mobile' %}" class="list-group-item list-group-item-action" aria-current="true">All Mobile</a>
-    <a href="{% url 'mobiledata' 'redmi' %}" class="list-group-item list-group-item-action" aria-current="true">Redmi</a>
-    <a href="{% url 'mobiledata' 'vivo' %}" class="list-group-item list-group-item-action">Vivo</a>
-    <a href="{% url 'mobiledata' 'iphone' %}" class="list-group-item list-group-item-action" aria-current="true">I-phone</a>
-    <a href="{% url 'mobiledata' 'above' %}" class="list-group-item list-group-item-action" aria-current="true">Above 20000</a>
-    <a href="{% url 'mobiledata' 'below' %}" class="list-group-item list-group-item-action" aria-current="true">Below 20000</a>
-
-
-  </div> 
-  </div>
-  <div class="col-sm-8">
-   <div class="col-sm-8">
-    {% for m in mobiles %}
-     <div class="col-sm-4 text-center mb-4">
-      <a href="{% url 'product-detail' m.id %}"
-      class="btn">
-      <div clss="item">
-        <img src="{{m.product_image.url}}" alt="" height="" class="">
-        <div class="fw-bold">{{m.title}}</div>
-        <div class="fw-bold">Rs.{{m.discounted_price}}
-        <small class="fw-light text-decoration-line-through">{{m.selling_price}}</small></div>
-        </div>
-      </a>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="list-group">
+        <!-- Use cards or icons for product categories -->
+        <a href="{% url 'mobile' %}" class="list-group-item list-group-item-action" aria-current="true">All Mobile</a>
+        <a href="{% url 'mobiledata' 'redmi' %}" class="list-group-item list-group-item-action" aria-current="true">Redmi</a>
+        <a href="{% url 'mobiledata' 'vivo' %}" class="list-group-item list-group-item-action">Vivo</a>
+        <a href="{% url 'mobiledata' 'iphone' %}" class="list-group-item list-group-item-action" aria-current="true">I-phone</a>
+        <a href="{% url 'mobiledata' 'above' %}" class="list-group-item list-group-item-action" aria-current="true">Above 20000</a>
+        <a href="{% url 'mobiledata' 'below' %}" class="list-group-item list-group-item-action" aria-current="true">Below 20000</a>
+      </div> 
     </div>
-    {% endfor %}
+    <div class="single_catagory_area col-sm-9">
+      <div class="row">
+        {% for m in mobiles %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <a href="{% url 'product-detail' m.id %}">
+              <img src="{{m.product_image.url}}" alt="{{m.title}}" class="card-img-top">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">{{m.title}}</h5>
+              <p class="card-text">
+                <span class="fw-bold">Rs.{{m.discounted_price}}</span>
+                <small class="fw-light text-decoration-line-through">Rs.{{m.selling_price}}</small>
+              </p>
+              <!-- Add 'Add to Cart' or 'Buy Now' button here -->
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- Add pagination here if needed -->
+    </div>
   </div>
-  
-
-         
-  </div>
- </div>
 </div>
 {% endblock main-content %}

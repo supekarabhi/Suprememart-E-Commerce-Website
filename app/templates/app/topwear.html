@@ -1,38 +1,49 @@
 {% extends 'app/base.html' %}
 {% load static %}
+
 {% block title %}Buy Now{% endblock title %}
+
+{% block header %}
+<!-- Add your header here, including logo, navigation menu, and search bar -->
+{% endblock header %}
+
 {% block main-content %}
 <div class="container my-5">
- <div class="row">
-  <div class="col-sm-3">
-   <div class="list-group">
-    <a href="{% url 'topwear' %}" class="list-group-item list-group-item-action" aria-current="true">Topwears</a>
-    <a href="{% url 'topweardata' 'local' %}" class="list-group-item list-group-item-action" aria-current="true">Local</a>
-    <a href="{% url 'topweardata' 'branded' %}" class="list-group-item list-group-item-action">Branded</a>
-   
-
-  </div> 
-  </div>
-  <div class="col-sm-8">
-   <div class="col-sm-8">
-    {% for t in topwears %}
-     <div class="col-sm-4 text-center mb-4">
-      <a href="{% url 'product-detail' t.id %}"
-      class="btn">
-      <div clss="item">
-        <img src="{{t.product_image.url}}" alt="" height="" class="">
-        <div class="fw-bold">{{t.title}}</div>
-        <div class="fw-bold">Rs.{{t.discounted_price}}
-        <small class="fw-light text-decoration-line-through">{{t.selling_price}}</small></div>
-        </div>
-      </a>
+  <div class="single_catagory_area row">
+    <div class="col-sm-3">
+      <div class="list-group">
+        <!-- Use cards or icons for product categories -->
+        <a href="{% url 'topwear' %}" class="list-group-item list-group-item-action" aria-current="true">Topwears</a>
+        <a href="{% url 'topweardata' 'local' %}" class="list-group-item list-group-item-action" aria-current="true">Local</a>
+        <a href="{% url 'topweardata' 'branded' %}" class="list-group-item list-group-item-action">Branded</a>
+      </div> 
     </div>
-    {% endfor %}
+    <div class="col-sm-9">
+      <div class="row">
+        {% for t in topwears %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <a href="{% url 'product-detail' t.id %}">
+              <img src="{{t.product_image.url}}" alt="{{t.title}}" class="card-img-top">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">{{t.title}}</h5>
+              <p class="card-text">
+                <span class="fw-bold">Rs.{{t.discounted_price}}</span>
+                <small class="fw-light text-decoration-line-through">Rs.{{t.selling_price}}</small>
+              </p>
+              <!-- Add 'Add to Cart' or 'Buy Now' button here -->
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- Add pagination here if needed -->
+    </div>
   </div>
-  
-
-         
-  </div>
- </div>
 </div>
 {% endblock main-content %}
+
+{% block footer %}
+<!-- Add your footer here, including contact information and other relevant details -->
+{% endblock footer %}

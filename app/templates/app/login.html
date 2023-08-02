@@ -16,7 +16,7 @@
      <small><a href="{% url 'password_reset' %}">Forgot password ?</a></small><br>
      <input type="submit" class="btn btn-primary mt-4" value="login">
      <br>
-     <div class="text-center text-primary fw-bold"><small>New to Suprememart ?<a href="{% url 'customerregistration' %}" class="text-danger">Create new account</a></samall></div>
+     <div class="text-center text-primary fw-bold py-2"><small>New to Suprememart ?   <a href="{% url 'customerregistration' %}" class="text-danger">Create New Account</a></samall></div>
         {% if form.non_field_errors %}
          {% for error in form.non_field_errors %}
           <p class="alert alert-danger my-3">{{error}}</p>

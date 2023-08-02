@@ -17,81 +17,67 @@
 
     <!--Custom CSS-->
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>SupremeMart | {% block title %} {% endblock title %} </title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-     <div class="container">
-       <a class="navbar-brand" href="/">SupremeMart</a>
-       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-       </button>
-       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-           <li class="nav-item">
-             <a class="nav-link active" aria-current="page" href="/">Home</a>
-           </li>
-           <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle text-white" href="#" id="electronicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-               Electronics
-             </a>
-             <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
-               <li><a class="dropdown-item" href="mobile/">Mobile</a></li>
-               <li><a class="dropdown-item" href="laptop/">Laptop</a></li>
-             </ul>
-           </li>
-           <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle text-white" href="#" id="fashionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-               Fashion
-             </a>
-             <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
-               <li><a class="dropdown-item" href="topwear/">Top Wear</a></li>
-               <li><a class="dropdown-item" href="bottomwear">Bottom Wear</a></li>
-             </ul>
-           </li>
-         </ul>
-         <form class="d-flex">
-           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-           <button class="btn btn-warning" type="submit">A</button>
-         </form>
-         <div>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          {% if request.user.is_authenticated %}
-           <li class="nav-item dropdown mx-2">
-              <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-               {{request.user.username|capfirst}}
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
-                <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
-                <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
-                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-              </ul>
-            </li>
-            <li class="nav-item mx-2">
-             <a href="{% url 'showcart' %}" class="nav-link text-white"><span class="badge bg-danger">1</span> Cart </a>
-            {% else %}
-            </li>
-            <li class="nav-item mx-2">
-             <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
-            </li>
-            <li class="nav-item mx-2">
-             <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registration</a>
-            </li>
-          {% endif %}  
+    <nav class="headerCol">
+     <div class="container-fluid">
+       <div class="row align-items-center">
+        
+       </div>
+      </div>
+      <div class="col">
+          <div class="d-md-none">
+          <button class="navToggle">
+              <span class="navToggle__text">Toggle Menu</span>
+          </button>
+          </div>
+
+          <div class="navCollapseCol">
+          <div class="navCol">
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li class="dropdown">
+                  <a href="#" class="dropbtn">Fashion</a>
+                  <div class="dropdown-content">
+                      <a href="topwear/">Top Wear</a>
+                      <a href="bottomwear">Bottom Wear</a>
+                  </div>
+              </li>
+              <li class="dropdown">
+                  <a href="#" class="dropbtn">Electronics</a>
+                  <div class="dropdown-content">
+                      <a href="mobile/">Mobile</a>
+                      <a href="laptop/">Laptop</a>
+                  </div>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropbtn"><img src="{% static 'app/images/banner/w.jpg' %}" height="20" width="20" alt="User Icon"></a>
+                <div class="dropdown-content">
+                 <a href="{% url 'customerregistration' %}">Register</a>
+                 <a href="{% url 'profile' %}">Profile</a>
+                 <a href="{% url 'orders' %}">Orders</a>
+                 <a href="{% url 'passwordchange' %}">Change Password</a>
+
+              <li> <a href="{% url 'showcart' %}" ><img src="{% static 'app/images/banner/a.jpg' %}" height="20" width="20" alt="User Icon"></a></li>
+                <li> <a href="{% url 'login' %}" ><img src="{% static 'app/images/banner/l.jpg' %}" height="20" width="20" alt="User Icon"></a></li>
+                <li> <a href="{% url 'logout' %}" ><img src="{% static 'app/images/banner/o.jpg' %}" height="20" width="20" alt="User Icon"></a></li>
+
           </ul>
+
          </div>
        </div>
      </div>
     </nav>
+    
     {% block banner_slider %} {% endblock banner_slider %}
     {% block livesale %} {% endblock livesale %}
     {% block main-content %} {% endblock main-content %}
 
     <!-- Start Footer -->
-    <footer class="container-fluid bg-dark text-center p-2 mt-5">
+    <footer class="container-fluid bg-dark text-center p-2 py-5">
         <small class="text-white">Copyright &copy; 2023 || Designed By Supekarabhi || </small>
         <img src="{% static 'app/images/payment.png' %}" alt="" srcset="" class="img-fluid" height="2px">
     </footer> <!-- End Footer -->
